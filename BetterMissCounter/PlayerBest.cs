@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Threading;
+using System.Web;
 using TMPro;
 
 namespace BetterMissCounter
@@ -13,7 +12,7 @@ namespace BetterMissCounter
         private readonly UserInfo userInfo;
         private readonly MapInfo mapInfo;
 
-        public PlayerBest(IPlatformUserModel platformUserModel,GameplayCoreSceneSetupData gameplayCoreSceneSetupData)
+        public PlayerBest(IPlatformUserModel platformUserModel, GameplayCoreSceneSetupData gameplayCoreSceneSetupData)
         {
             userInfo = platformUserModel.GetUserInfo(CancellationToken.None).Result;
             BeatmapLevel beatmapLevel = gameplayCoreSceneSetupData.beatmapLevel;
@@ -57,7 +56,7 @@ namespace BetterMissCounter
         }
 
         public void ScoreSaberThread(ref TMP_Text bottomText, ref int PBMissCount)
-        {            
+        {
             WebClient client = new WebClient();
             string endpoint = "";
             for (int page = 1; ; page++)

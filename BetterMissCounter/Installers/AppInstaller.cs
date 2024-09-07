@@ -2,7 +2,7 @@
 
 namespace BetterMissCounter.Installers
 {
-    internal class AppInstaller: Installer
+    internal class AppInstaller : Installer
     {
         public override void InstallBindings()
         {

@@ -9,7 +9,7 @@ namespace BetterMissCounter.Views
     {
         [UIValue("CounterXOffset")]
         public float CounterXOffset
-        { 
+        {
             get => PluginConfig.Instance.CounterXOffset;
             set => PluginConfig.Instance.CounterXOffset = value;
         }

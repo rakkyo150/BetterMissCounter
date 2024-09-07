@@ -1,9 +1,9 @@
-﻿using IPA;
-using IPALogger = IPA.Logging.Logger;
+﻿using BetterMissCounter.Installers;
+using IPA;
 using IPA.Config.Stores;
-using System.Runtime.CompilerServices;
 using SiraUtil.Zenject;
-using BetterMissCounter.Installers;
+using System.Runtime.CompilerServices;
+using IPALogger = IPA.Logging.Logger;
 
 [assembly: InternalsVisibleTo(GeneratedStore.AssemblyVisibilityTarget)]
 namespace BetterMissCounter

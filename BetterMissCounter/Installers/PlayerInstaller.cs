@@ -2,7 +2,7 @@
 
 namespace BetterMissCounter.Installers
 {
-    public class PlayerInstaller: Installer
+    public class PlayerInstaller : Installer
     {
         public override void InstallBindings()
         {

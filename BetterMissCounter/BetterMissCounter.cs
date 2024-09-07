@@ -1,7 +1,5 @@
 ﻿using CountersPlus.Counters.Interfaces;
 using CountersPlus.Utils;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -13,7 +11,7 @@ namespace BetterMissCounter
     /// For a full list of Messages a Monobehaviour can receive from the game, see https://docs.unity3d.com/ScriptReference/MonoBehaviour.html.
     /// </summary>
 	public class BetterMissCounter : CountersPlus.Counters.Custom.BasicCustomCounter, INoteEventHandler
-    {   
+    {
         TMP_Text missText;
         TMP_Text bottomText;
         int missCount = 0;
