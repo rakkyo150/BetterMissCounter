@@ -2,11 +2,11 @@
 
 namespace BetterMissCounter.Installers
 {
-    public class PlayerInstaller: Installer
+    internal class AppInstaller: Installer
     {
         public override void InstallBindings()
         {
-            Container.Bind<PlayerBest>().AsSingle();
+            Container.Bind<BloomFontAsset>().AsSingle();
         }
     }
 }

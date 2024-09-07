@@ -21,6 +21,7 @@ namespace BetterMissCounter
             Log = logger;
             PluginConfig.Instance = config.Generated<PluginConfig>();
             zenjector.Install<PlayerInstaller>(Location.Player);
+            zenjector.Install<AppInstaller>(Location.App);
         }
 
         [OnStart]

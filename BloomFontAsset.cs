@@ -19,6 +19,9 @@ namespace BetterMissCounter
             var original = Resources.FindObjectsOfTypeAll<TMP_FontAsset>().FirstOrDefault(x => x.name == "Teko-Medium SDF");
             _bloomFontAsset = CopyFontAsset(original, "Teko-Medium SDF (Bloom)");
             _bloomFontAsset.material.shader = Resources.FindObjectsOfTypeAll<Shader>().First(x => x.name.Contains("TextMeshPro/Distance Field"));
+#if DEBUG
+            Plugin.Log.Info("BloomFontAsset created");
+#endif
         }
 
         private static TMP_FontAsset CopyFontAsset(TMP_FontAsset original, string newName = "")
