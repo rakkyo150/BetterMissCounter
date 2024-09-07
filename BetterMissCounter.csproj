@@ -130,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BetterMissCounter.cs" />
+    <Compile Include="BloomFontAsset.cs" />
     <Compile Include="Installers\PlayerInstaller.cs" />
     <Compile Include="PlayerBest.cs" />
     <Compile Include="Plugin.cs" />

@@ -7,6 +7,7 @@ namespace BetterMissCounter.Installers
         public override void InstallBindings()
         {
             Container.Bind<PlayerInstaller>().AsSingle();
+            Container.Bind<BloomFontAsset>().AsSingle();
         }
     }
 }

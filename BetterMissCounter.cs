@@ -20,13 +20,13 @@ namespace BetterMissCounter
         int PBMissCount = -1;
 
         private readonly PlayerBest _pb;
-        private readonly TMP_FontAsset bloomFontAsset;
+        private readonly BloomFontAsset _bloomFontAsset;
         private readonly bool isThisMapCustomLevel;
 
-        BetterMissCounter(GameplayCoreSceneSetupData gameplayCoreSceneSetupData, PlayerBest pb)
+        BetterMissCounter(GameplayCoreSceneSetupData gameplayCoreSceneSetupData, PlayerBest pb, BloomFontAsset bloomFontAsset)
         {
             isThisMapCustomLevel = gameplayCoreSceneSetupData.difficultyBeatmap.level.levelID.IndexOf("custom_level_") != -1;
-            bloomFontAsset = Resources.FindObjectsOfTypeAll<TMP_FontAsset>().FirstOrDefault(x => x.name == "Teko-Bold SDF");
+            _bloomFontAsset = bloomFontAsset;
             _pb = pb;
         }
 
@@ -52,20 +52,20 @@ namespace BetterMissCounter
             topText.color = PluginConfig.Instance.TopColor;
             if (PluginConfig.Instance.TopBloom)
             {
-                topText.font = bloomFontAsset;
+                topText.font = _bloomFontAsset.FontAsset;
             }
             missText.fontSize = 4f;
             missText.text = "0";
             missText.color = PluginConfig.Instance.LessColor;
             if (PluginConfig.Instance.MissesBloom)
             {
-                missText.font = bloomFontAsset;
+                missText.font = _bloomFontAsset.FontAsset;
             }
             bottomText.fontSize = 2f;
             bottomText.color = PluginConfig.Instance.BottomColor;
             if (PluginConfig.Instance.BottomBloom)
             {
-                bottomText.font = bloomFontAsset;
+                bottomText.font = _bloomFontAsset.FontAsset;
             }
 
             if (isThisMapCustomLevel)
