@@ -37,14 +37,15 @@ namespace BetterMissCounter
             return list.ToArray();
         }
 
-        public int ScoreSaberThread(ref TMP_Text bottomText, int PBMissCount)
-        {
+        public void ScoreSaberThread(ref TMP_Text bottomText, ref int PBMissCount)
+        {            
             WebClient client = new WebClient();
+            string endpoint = "";
             for (int page = 1; ; page++)
             {
                 try
                 {
-                    string endpoint = "https://scoresaber.com/api/leaderboard/by-hash/" + mapInfo.LevelHash + "/scores?page=" + page + "&difficulty=" + mapInfo.DifficultyRank + "&gameMode=Solo" + mapInfo.Characteristic + "&search=" + HttpUtility.UrlEncode(userInfo.userName);
+                    endpoint = "https://scoresaber.com/api/leaderboard/by-hash/" + mapInfo.LevelHash + "/scores?page=" + page + "&difficulty=" + mapInfo.DifficultyRank + "&gameMode=Solo" + mapInfo.Characteristic + "&search=" + HttpUtility.UrlEncode(userInfo.userName);
                     string res = client.DownloadString(endpoint);
 
                     String[] ids = GetStringsBetweenStrings(res, "\"id\": \"", "\"");
@@ -64,26 +65,31 @@ namespace BetterMissCounter
                                 PBMissCount = totalMisses;
                                 bottomText.text = PluginConfig.Instance.BottomText + PBMissCount;
                             }
-                            return PBMissCount;
+                            return;
                         }
                     }
 
                     if (page == ((Int32.Parse(totalItems[0]) - 1) / Int32.Parse(itemsPerPage[0]) + 1))
-                        return PBMissCount;
+                        return;
                 }
                 catch
                 {
-                    return PBMissCount;
+#if DEBUG
+                    Plugin.Log.Error("ScoreSaber API failed");
+                    Plugin.Log.Error($"endpoint:{endpoint}");
+#endif
+                    return;
                 }
             }
         }
 
-        public int BeatLeaderThread(ref TMP_Text bottomText, int PBMissCount)
+        public void BeatLeaderThread(ref TMP_Text bottomText, ref int PBMissCount)
         {
             WebClient client = new WebClient();
+            string endpoint = "";
             try
             {
-                string endpoint = "https://api.beatleader.xyz/score/" + userInfo.platformUserId + "/" + mapInfo.LevelHash + "/" + mapInfo.Difficulty + "/" + mapInfo.Characteristic;
+                endpoint = "https://api.beatleader.xyz/score/" + userInfo.platformUserId + "/" + mapInfo.LevelHash + "/" + mapInfo.Difficulty + "/" + mapInfo.Characteristic;
                 string res = client.DownloadString(endpoint);
                 String[] missedNotes = GetStringsBetweenStrings(res, "\"missedNotes\":", ",");
                 String[] badCuts = GetStringsBetweenStrings(res, "\"badCuts\":", ",");
@@ -95,14 +101,18 @@ namespace BetterMissCounter
                         PBMissCount = totalMisses;
                         bottomText.text = PluginConfig.Instance.BottomText + PBMissCount;
                     }
-                    return PBMissCount;
+                    return;
                 }
 
-                return PBMissCount;
+                return;
             }
             catch
             {
-                return PBMissCount;
+#if DEBUG
+                Plugin.Log.Error("BeatLeader API failed");
+                Plugin.Log.Error($"endpoint:{endpoint}");
+#endif
+                return;
             }
         }
 

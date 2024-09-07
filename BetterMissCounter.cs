@@ -74,14 +74,14 @@ namespace BetterMissCounter
                 {
                     Task.Run(() =>
                     {
-                        PBMissCount = _pb.ScoreSaberThread(ref bottomText, PBMissCount);
+                        _pb.ScoreSaberThread(ref bottomText, ref PBMissCount);
                     });
                 }
                 if (PluginConfig.Instance.UseBeatLeader)
                 {
                     Task.Run(() =>
                     {
-                        PBMissCount = _pb.BeatLeaderThread(ref bottomText, PBMissCount);
+                        _pb.BeatLeaderThread(ref bottomText, ref PBMissCount);
                     });
                 }
             }
