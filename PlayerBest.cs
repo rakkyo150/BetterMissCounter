@@ -15,7 +15,7 @@ namespace BetterMissCounter
 
         public PlayerBest(IPlatformUserModel platformUserModel,GameplayCoreSceneSetupData gameplayCoreSceneSetupData)
         {
-            UserInfo userInfo = platformUserModel.GetUserInfo(CancellationToken.None).Result;
+            userInfo = platformUserModel.GetUserInfo(CancellationToken.None).Result;
             IDifficultyBeatmap beatmap = gameplayCoreSceneSetupData.difficultyBeatmap;
             int difficultyRank = beatmap.difficultyRank;
             string difficulty = beatmap.difficulty.SerializedName();
