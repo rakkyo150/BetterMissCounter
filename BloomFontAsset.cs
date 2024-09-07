@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace BetterMissCounter
 {
-    internal class BloomFontAsset
+    public class BloomFontAsset
     {
         private TMP_FontAsset _bloomFontAsset = null;
 

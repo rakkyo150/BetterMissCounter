@@ -12,7 +12,7 @@
   "features": {
     "CountersPlus.CustomCounter": {
       "Name": "Better Miss Counter",
-      "CounterLocation": "BetterMissCounter.CustomCounter",
+      "CounterLocation": "BetterMissCounter.BetterMissCounter",
       "MultiplayerReady": true,
       "ConfigDefaults": {
         "Enabled": true,
@@ -20,8 +20,8 @@
         "Distance": 0
       },
       "BSML": {
-        "Resource": "BetterMissCounter.SettingsUI.bsml",
-        "Host": "BetterMissCounter.TestUIHost",
+        "Resource": "BetterMissCounter.Views.SettingsUI.bsml",
+        "Host": "BetterMissCounter.Views.SettingController",
         "Icon": "BetterMissCounter.icon.png"
       }
     }

@@ -23,7 +23,7 @@ namespace BetterMissCounter
         private readonly BloomFontAsset _bloomFontAsset;
         private readonly bool isThisMapCustomLevel;
 
-        BetterMissCounter(GameplayCoreSceneSetupData gameplayCoreSceneSetupData, PlayerBest pb, BloomFontAsset bloomFontAsset)
+        public BetterMissCounter(GameplayCoreSceneSetupData gameplayCoreSceneSetupData, PlayerBest pb, BloomFontAsset bloomFontAsset)
         {
             isThisMapCustomLevel = gameplayCoreSceneSetupData.difficultyBeatmap.level.levelID.IndexOf("custom_level_") != -1;
             _bloomFontAsset = bloomFontAsset;

@@ -8,14 +8,14 @@ using TMPro;
 
 namespace BetterMissCounter
 {
-    internal class PlayerBest
+    public class PlayerBest
     {
         private readonly UserInfo userInfo;
         private readonly MapInfo mapInfo;
 
         public PlayerBest(IPlatformUserModel platformUserModel,GameplayCoreSceneSetupData gameplayCoreSceneSetupData)
         {
-            var userInfo = platformUserModel.GetUserInfo(CancellationToken.None).Result;
+            UserInfo userInfo = platformUserModel.GetUserInfo(CancellationToken.None).Result;
             IDifficultyBeatmap beatmap = gameplayCoreSceneSetupData.difficultyBeatmap;
             int difficultyRank = beatmap.difficultyRank;
             string difficulty = beatmap.difficulty.SerializedName();
