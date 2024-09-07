@@ -37,7 +37,7 @@ namespace BetterMissCounter
             return list.ToArray();
         }
 
-        public int ScoreSaberThread(ref TMP_Text missText, ref TMP_Text bottomText, int PBMissCount)
+        public int ScoreSaberThread(ref TMP_Text bottomText, int PBMissCount)
         {
             WebClient client = new WebClient();
             for (int page = 1; ; page++)
@@ -78,7 +78,7 @@ namespace BetterMissCounter
             }
         }
 
-        public int BeatLeaderThread(ref TMP_Text missText, ref TMP_Text bottomText, int PBMissCount)
+        public int BeatLeaderThread(ref TMP_Text bottomText, int PBMissCount)
         {
             WebClient client = new WebClient();
             try
