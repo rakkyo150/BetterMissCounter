@@ -16,11 +16,30 @@ namespace BetterMissCounter
         public PlayerBest(IPlatformUserModel platformUserModel,GameplayCoreSceneSetupData gameplayCoreSceneSetupData)
         {
             userInfo = platformUserModel.GetUserInfo(CancellationToken.None).Result;
-            IDifficultyBeatmap beatmap = gameplayCoreSceneSetupData.difficultyBeatmap;
-            int difficultyRank = beatmap.difficultyRank;
-            string difficulty = beatmap.difficulty.SerializedName();
-            string levelHash = beatmap.level.levelID.Substring(13);
-            string characteristic = beatmap.parentDifficultyBeatmapSet.beatmapCharacteristic.serializedName;
+            BeatmapLevel beatmapLevel = gameplayCoreSceneSetupData.beatmapLevel;
+            BeatmapKey beatmapKey = gameplayCoreSceneSetupData.beatmapKey;
+            int difficultyRank = -1;
+            switch (beatmapKey.difficulty)
+            {
+                case BeatmapDifficulty.Easy:
+                    difficultyRank = 1;
+                    break;
+                case BeatmapDifficulty.Normal:
+                    difficultyRank = 3;
+                    break;
+                case BeatmapDifficulty.Hard:
+                    difficultyRank = 5;
+                    break;
+                case BeatmapDifficulty.Expert:
+                    difficultyRank = 7;
+                    break;
+                case BeatmapDifficulty.ExpertPlus:
+                    difficultyRank = 9;
+                    break;
+            }
+            string difficulty = beatmapKey.difficulty.ToString();
+            string levelHash = beatmapKey.levelId.Substring(13);
+            string characteristic = beatmapKey.beatmapCharacteristic.serializedName;
             this.mapInfo = new MapInfo(difficultyRank, difficulty, levelHash, characteristic);
         }
 
